@@ -4,13 +4,8 @@ from sqlalchemy import ForeignKey
 from models.user import User
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    account_id = db.Column(db.Integer, ForeignKey(User.id, ondelete='CASCADE'), nullable=False)
-    date = db.Column(db.String(40), nullable=False)
-    payee = db.Column(db.String(40))
-    amount = db.Column(db.Float, nullable=False)
-    current_balance = db.Column(db.Float, nullable=False)
-
-# What is Foreign Key?
-# What is primary key?
-# How is this data stored in the computer?
-# What is nullable?
+    sender_account_id = db.Column(db.Integer, db.ForeignKey('account'))
+    reciever_account_id = db.Column(db.Integer, db.ForeignKey('account'))
+    Amount = db.Column(db.Float, nullable = False)
+    Date = db.Column(db.String)
+    Status = db.Column(db.String)
