@@ -1,7 +1,8 @@
 from flask import Flask
 from config import Config
-from models import db
+from models import db,account,transaction,user
 from routes import auth_routes, transaction_routes, account_routes
+from services import account_service,auth_service,transaction_service
 
 app = Flask(__name__)
 #

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 from flask_login import login_user, logout_user
-from services.auth_service import create_user, authenticate_user
+from services.transaction_service import add_transaction, get_transactions
 from models import db
 from services.auth_service import RegisterForm,LoginForm
 from models.user import User
