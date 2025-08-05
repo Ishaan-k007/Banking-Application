@@ -1,14 +1,10 @@
-<!DOCTYPE html> ## to do this ! then tab
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1> Login Authentication System in Flask </h1>
-    <a href ="{{url_for('login')}}">Login Page</a><br> # button to lead to login in page
-    <a href ="{{url_for('register')}}">Register Page</a><br>
+
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
     
-</body>
-</html>
+    <h1> Welcome to my Banking Application </h1>
+    
+    
+
+
+{% endblock %}

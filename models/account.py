@@ -4,7 +4,19 @@ from models.user import User
 from sqlalchemy import ForeignKey
 class AccountTable(db.Model):
     id = db.Column(db.Integer, primary_key = True, nullable=False, unique=True)
+    account_name = db.Column(db.String(40), nullable = False, unique = True )
     balance = db.Column(db.Float, nullable=False, default=0.0)
-    User_id = db.Column(db.Integer, db.ForeignKey("User.id"))
-    interest_rate = db.Column(db.Integer, nullable = False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    interest_rate = db.Column(db.Integer, nullable = False,default = 0.1)
+    transactions_sent = db.relationship(
+    "Transaction",
+    foreign_keys='Transaction.sender_account_id',
+    backref='sender_account',
+    lazy="dynamic")
+
+    transactions_received = db.relationship(
+    "Transaction",
+    foreign_keys='Transaction.reciever_account_id',
+    backref='receiver_account',
+    lazy="dynamic")
     

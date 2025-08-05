@@ -4,8 +4,8 @@ from sqlalchemy import ForeignKey
 from models.user import User
 class Transaction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    sender_account_id = db.Column(db.Integer, db.ForeignKey('account'))
-    reciever_account_id = db.Column(db.Integer, db.ForeignKey('account'))
+    sender_account_id = db.Column(db.Integer, db.ForeignKey('account_table.id'))
+    reciever_account_id = db.Column(db.Integer, db.ForeignKey('account_table.id'))
     Amount = db.Column(db.Float, nullable = False)
     Date = db.Column(db.String)
     Status = db.Column(db.String)
