@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+
+    <h2>Sent Transactions</h2>
+{% if sent_transactions %}
+  <ul class="list-group">
+    {% for transaction in sent_transactions %}
+      <li class="list-group-item">
+        To: {{ transaction.receiver_account.account_name }} |
+        Amount: {{ transaction.Amount }} |
+        Date: {{ transaction.Date }} |
+        Status: {{ transaction.Status }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No sent transactions found.</p>
+{% endif %}
+
+<hr>
+
+<h2>Received Transactions</h2>
+{% if received_transactions %}
+  <ul class="list-group">
+    {% for transaction in received_transactions %}
+      <li class="list-group-item">
+        From: {{ transaction.sender_account.account_name }} |
+        Amount: {{ transaction.Amount }} |
+        Date: {{ transaction.Date }} |
+        Status: {{ transaction.Status }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No received transactions found.</p>
+{% endif %}
+
+    
+
+        <form method = "POST">
+        <h3 align = "center">Transactions</h3>
+        <div class = "form-group">
+            <!-- name is what is passed into the backend and placeholder is what is displayed-->
+            <label for = "reciever_account_name">Reciever Account Name</label>
+            <input
+                type = "text"
+                class = "form-control"
+                name = "reciever_account_name" 
+                
+            />
+
+            <label for = "amount">Amount</label>
+            <input
+                type = "number"
+                class = "form-control"
+                name = "amount" 
+                
+            />
+
+            <label for = "date">date</label>
+            <input
+                type = "text"
+                class = "form-control"
+                name = "date" 
+                
+            />
+        </div>
+        
+
+        
+        <br />
+        <button type = "submit" class = "btn btn primary">Submit</button>
+
+{% endblock %}   
