@@ -1,11 +1,11 @@
-from flask import Flask, render_template  # Add render_template
+from flask import Flask, render_template 
 from flask_login import LoginManager
 from config import Config
 from models import db
 from models.account import AccountTable
 from models.transaction import Transaction
 from models.user import User
-
+from flask_migrate import Migrate
 from routes.auth_routes import auth
 from routes.account_routes import account
 from routes.user_routes import user
@@ -26,8 +26,8 @@ def load_user(user_id):
 
 # Initialise a database 
 db.init_app(app)
-with app.app_context():
-    db.create_all()
+migrate = Migrate(app, db)
+
 
 # Register blueprints
 app.register_blueprint(auth, url_prefix='/')
@@ -40,4 +40,4 @@ def home():
     return render_template('home.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
